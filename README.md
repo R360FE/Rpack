@@ -28,4 +28,7 @@
 
 1) 单文件组件里的js单独打包
 2) 开发模式和生产模式
-3) 丰富例子，加上vuex
+3) 热更新
+4) sourcemap
+5) webpack-dev-server直接开服务打开index.html
+6) 丰富例子，加上vuex
