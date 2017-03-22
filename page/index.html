@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>webpack构建工具 - 融360</title>
+	<!-- <script src="../lib/zepto.js"></script> -->
+	<script src="../dist/vendor.js"></script>
+	<link rel="stylesheet" href="../dist/styles/app.css" >
+    <link rel="stylesheet" href="../dist/styles/components.css">
+</head>
+<body>
+    <script>
+        var CONST = {
+            currentInfo: {
+                nextTime: "2020/09/30",
+                showWinTime: "2020/09/18",
+                currentCoupon: "200",
+                sumCoupon: "1000",
+                stage: 34,
+                status: 2
+            },
+            luckydogs: [{
+             stage: 1,
+             showWinTime: "2020/09/09",
+             phone: "131****2345",
+             participateNum: 200,
+             couponNo: 11
+            },{
+             stage: 2,
+             showWinTime: "2020/09/10",
+             phone: "132****2345",
+             participateNum: 200,
+             couponNo: 12
+            },{
+             stage: 3,
+             showWinTime: "2020/09/11",
+             phone: "133****2345",
+             participateNum: 200,
+             couponNo: 13
+            },{
+             stage: 4,
+             showWinTime: "2020/09/12",
+             phone: "134****2345",
+             participateNum: 200,
+             couponNo: 14
+            },{
+             stage: 5,
+             showWinTime: "2020/09/13",
+             phone: "135****2345",
+             participateNum: 200,
+             couponNo: 15
+            }]
+        }
+    </script>
+    <div id="app">
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+    <!-- <div id="sec"></div> -->
+	<script src="../dist/app.js"></script>    
+</body>
+</html>

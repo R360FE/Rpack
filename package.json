@@ -1,0 +1,27 @@
+{
+  "name": "duobao",
+  "version": "1.0.0",
+  "description": "一元夺宝运营活动",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --inline",
+    "build": "webpack"
+  },
+  "author": "ingrid.zhang",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.27.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.13.2",
+    "vue": "^2.2.4",
+    "vue-loader": "^11.1.4",
+    "vue-router": "^2.3.0",
+    "vue-template-compiler": "^2.2.4",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2",
+    "zepto": "^1.2.0"
+  }
+}
