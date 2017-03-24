@@ -4,14 +4,16 @@
   "description": "一元夺宝运营活动",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --inline",
-    "build": "webpack"
+    "dev": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "author": "ingrid.zhang",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^3.2.4",
     "css-loader": "^0.27.2",
+    "eslint": "^3.18.0",
+    "eslint-loader": "^1.6.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.3",
@@ -21,7 +23,6 @@
     "vue-router": "^2.3.0",
     "vue-template-compiler": "^2.2.4",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2",
-    "zepto": "^1.2.0"
+    "webpack-dev-server": "^2.4.2"
   }
 }

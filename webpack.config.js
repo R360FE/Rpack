@@ -20,11 +20,22 @@ module.exports = {
   output: {
       path: path.resolve(__dirname, './dist'),
       filename: "[name].js",
-      publicPath: '/static/webapp/rui/m_duobao',
+      publicPath: '/static/webapp/rui/m_rpack',
       chunkFilename: "[name].js",
   },
   module: {
     rules: [
+      /*================================================*/
+      /*=============避免低级错误和统一代码的风格===========*/
+      /*可以IDE里使用eslint插件，开发过程中及时发现问题，不用等到编译时发现问题*/
+      /*================================================*/
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        include: [/util/,/component/,/router/],
+        exclude: [/node_modules/],
+        enforce: "pre"
+      },
       /*================================================*/
       /*=============组件里的样式抽取=====================*/
       /*================================================*/
@@ -42,12 +53,7 @@ module.exports = {
             // 'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
             //抽取*.vue里的样式如下配置：
             scss: compCss.extract({
-              use: [{
-                loader:'css-loader',
-                options:{
-                  minimize:false
-                }
-              },"sass-loader"],
+              use: "css-loader!sass-loader",
               fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
             })
             
@@ -64,18 +70,20 @@ module.exports = {
         options: {
           loaders: {
             scss: appCss.extract({
-              // use: "css-loader!sass-loader",
-              use: [{
-                loader: 'css-loader',
-                options: {
-                  minimize: false
-                }
-              },"sass-loader"],
+              use: "css-loader!sass-loader",
+              // use: [{
+              //   loader: 'css-loader',
+              //   options: {
+              //     minimize: false
+              //   }
+              // },"sass-loader"],
               fallback: "vue-style-loader"
             })
           }
         }
-      }
+      },
+
+
     ]
   },
   plugins: [
@@ -85,14 +93,7 @@ module.exports = {
           // chunks: ['vendor']   //增加这个类库就打包不到一起了，表示抽取entry.vendor公共代码
       }),
       appCss,
-      compCss,
-      // new webpack.optimize.UglifyJsPlugin(),//使用uglifyJsPlugin就不能使用一些简写了，对语法校验严格了
-
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: '"production"'
-        }
-      }),
+      compCss
   ],
   resolve: {
     alias: {
@@ -108,4 +109,24 @@ module.exports = {
     historyApiFallback: true,//不跳转
     inline: true//实时刷新
   }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ])
 }

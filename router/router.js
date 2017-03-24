@@ -19,12 +19,12 @@ var routes = [{
 
 //创建路由实例，然后传‘routes’配置
 var router = new VueRouter({
-	routes:routes
+	routes: routes
 });
 
 //创建和挂载根实例
 var app = new Vue({
-	router:router
+	router: router
 }).$mount("#app");
 
 
