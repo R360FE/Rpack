@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no, email=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>webpack构建工具 - 融360</title>
-	<!-- <script src="../lib/zepto.js"></script> -->
-	<script src="../dist/vendor.js"></script>
-	<link rel="stylesheet" href="../dist/styles/app.css" >
-    <link rel="stylesheet" href="../dist/styles/components.css">
+    <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
     <script>
@@ -60,7 +56,6 @@
         <!-- 路由匹配到的组件将渲染在这里 -->
         <router-view></router-view>
     </div>
-    <!-- <div id="sec"></div> -->
-	<script src="../dist/app.js"></script>    
+    
 </body>
 </html>

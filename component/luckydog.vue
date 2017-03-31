@@ -40,7 +40,7 @@
 .ui-luckydog{
 	background: #e02a34;
 	border-radius: 6px;
-	margin: pxToRem(58px) pxToRem(20px) pxToRem(24px);
+	margin: pxToRem(20px) pxToRem(24px);
 	.ld-title{
 		font-size: pxToRem(30px);
 		color: #fff;

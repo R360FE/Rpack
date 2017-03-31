@@ -1,11 +1,14 @@
 
 var Vue = require("vue");
 var VueRouter = require("vue-router");
+var Vuex = require("vuex");
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
 //路由组件
 var index = require("../views/index/index.vue");
 var luckydogs = require("../views/luckydogs/luckydogs.vue");
+var result = require("../views/result/result.vue");
 var notfound = require("../views/notfound/notfound.vue");
 
 //定义路由，每个路由映射一个组件
@@ -13,6 +16,8 @@ var routes = [{
 	path: "/", component: index
 },{
 	path: "/luckydogs", component: luckydogs
+},{
+	path: "/result", component: result
 },{
 	path: "*", component: notfound
 }];
@@ -22,9 +27,50 @@ var router = new VueRouter({
 	routes: routes
 });
 
+//创建一个store
+var createNumArray = window.Utils.createNumArray;
+var store = new Vuex.Store({
+	state: {
+		diffTime: 20000000, //开奖倒计时
+		luckydogs: window.CONST.luckydogs,
+		nextStage: 6
+	},
+	getters: {
+		getTime: function(state){
+			return window.Utils.getTime(state.diffTime);
+		}
+	},
+	mutations: {
+		decreaseTm: function(state){
+			state.diffTime-=100;
+		},
+		addLuckydog: function(state){
+			var ld = {
+				stage: state.nextStage++,
+				showWinTime: createNumArray(4).join("")+"/"+"0"+createNumArray(1)+"/"+createNumArray(2),
+				phone: "1"+createNumArray(2).join("")+"****"+createNumArray(4).join(""),
+				participateNum: Math.round(Math.random()*100),
+				couponNo: createNumArray(6).join("")
+			};
+			state.luckydogs.push(ld);
+		},
+		removeLuckydog: function(state){
+			state.nextStage--;
+			state.luckydogs.pop();
+		}
+	},
+	actions: {
+
+	},
+	modules: {
+		
+	}
+})
+
 //创建和挂载根实例
 var app = new Vue({
-	router: router
+	router: router,
+	store: store
 }).$mount("#app");
 
 

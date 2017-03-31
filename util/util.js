@@ -11,6 +11,11 @@ window.Utils = {
 	},
 	formatTime: function(t){
 		return t>=10 ? t : ("0"+t);
+	},
+	createNumArray: function(len){/*0-9*/
+		return new Array(len).fill(1).map(function(item,index){
+			return Math.round(Math.random()*10%10);
+		});
 	}
 };
 

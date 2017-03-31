@@ -13,11 +13,11 @@
 		<div class="row2">
 			<div class="start"><div class="l-start"><span class="fz-24 cgrey">开奖时间：</span><span class="fz-24 cblue">{{showWinTime}}</span></div><div class="r-start"><span class="fz-30">倒计时</span></div></div>
 			<div class="timer cred">
-				<div class="hours fz-48">01</div>
+				<div class="hours fz-48">{{dtm.hours}}</div>
 				<div class="seprator fz-48">:</div>
-				<div class="minutes fz-48">23</div>
+				<div class="minutes fz-48">{{dtm.minutes}}</div>
 				<div class="seprator fz-48">:</div>
-				<div class='seconds fz-48'>45.6</div>
+				<div class='seconds fz-48'>{{dtm.seconds}}</div>
 			</div>
 			<div class="fz-22 cgrey">集齐1000份开奖哦</div>
 		</div>
@@ -37,63 +37,7 @@
 	</div>
 </div>
 </template>
-<script src="./actitem.js">
-
-// module.exports = {
-//  	name: "actItem",
-//  	// data: function(){
-//  	// 	return {
-//  	// 		stage: 1,
-//  	// 		nextTime: "17/01/01",//computed?
-//  	// 		showWinTime: "17/01/01",
-//  	// 		currentCoupon: 0,
-//  	// 		sumCoupon: 1000,
-//  	// 		status: 2
-//  	// 	}
-//  	// },
-//  	data: function(){
-//  		return {
-//  			diffTime: "20000000"
-//  		}
-//  	},
-//  	props: ["stage","nextTime","showWinTime","currentCoupon","sumCoupon","status"],
-//  	computed:{
-//  		pwidth: function(){
-//  			return parseInt(this.$props.currentCoupon)/parseInt(this.$props.sumCoupon)*100;
-//  		}
-//  	},
-// 	methods: {
-// 		goParticipate: function(e){
-// 			alert("Event is triggered! Current Coupon is:  " +  this.$props.currentCoupon );
-// 		}
-// 	},
-// 	mounted:function(){//lifecycle
-// 		var self = this, $el = $(self.$el),tm = self.diffTime,
-// 				$hours = $el.find(".hours"),
-// 				$minutes = $el.find('.minutes'),
-// 				$seconds = $el.find(".seconds"),
-// 				t = Utils.getTime(tm);
-// 			$hours.text(t.hours);
-// 		    $minutes.text(t.minutes);
-// 		    $seconds.text(t.seconds);
-// 		    if(tm){
-// 		    	var timeinterval = setInterval(function(){ //1s倒计时  
-// 		            tm = tm-100;   
-// 		            if(tm<=0){
-// 		    			clearInterval(timeinterval);	              
-// 		    	      	window.location.reload();
-// 		            }
-// 		            t = Utils.getTime(tm)
-// 		            $hours.text(t.hrs);
-// 		            $minutes.text(t.minutes);
-// 		            $seconds.text(t.seconds);                 
-// 		        },100);
-// 		    }
-// 	},
-	
-//  }
-
-</script>
+<script src="./actitem.js"></script>
 <style lang="scss" scoped >
 // pixels to rems 
 @function pxToRem($px) {

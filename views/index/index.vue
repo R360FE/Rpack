@@ -9,21 +9,19 @@
   var actitem = require('../../component/actitem.vue');
   var luckydog = require("../../component/luckydog.vue");
 
-  var data = $.extend(CONST.currentInfo,{
-    dogs:{
-      hasTitle: true,
-      hasAll: true,
-      luckydogs: CONST.luckydogs
-    }   
-  });
-
   module.exports = {
   	components: {
   		actitem: actitem,
   		luckydog: luckydog
   	},
   	data: function(){
-  		return data;
+      return $.extend(CONST.currentInfo,{
+                dogs:{
+                  hasTitle: true,
+                  hasAll: true,
+                  luckydogs: this.$store.state.luckydogs
+                }   
+              });
     },
     methods: {
       goLdPage: function(){
