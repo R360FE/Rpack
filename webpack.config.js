@@ -3,7 +3,7 @@ var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
-
+var scp = require("./util/scp.js");
 
 //create multiple instances
 const appCss = new ExtractTextPlugin({
@@ -147,3 +147,25 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+/******************************************************/
+/****************拷贝到远程机器**************************/
+/******************************************************/
+/*先注释掉，要拷贝时放开*/
+/*
+module.exports.plugins = (module.exports.plugins || []).concat([
+  function() {
+    this.plugin('done', function(stats) {
+      scp.send({
+        file: './dist/',
+        host: 'testhost',
+        user: 'test',
+        path: '~/yydist/'
+      }, function () {
+
+      });
+    });
+  }
+])
+*/
+
