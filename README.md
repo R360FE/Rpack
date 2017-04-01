@@ -6,7 +6,9 @@
 
 2) 将项目下载到本地，执行npm install,安装依赖
 
-3) 切换到项目目录执行 npm run dev or npm run build
+3) 切换到项目目录执行 
+	开发模式：npm run dev 
+	生产模式：npm run build
 
 4) 打开dist/page/index.html可以看到效果
 
@@ -24,10 +26,9 @@
 
 6) 热更新
 The easiest way to use Hot Module Replacement with the webpack-dev-server is to use the inline mode.
-
-. webpack.config.js 里配置 devServer{inline:true}
-. webpack-dev-server 命令行加 --inline --hot
-. 执行 npm run server 后，访问http://localhost:8080/page/index.html，当有修改后，页面会自动刷新
+	a) webpack.config.js 里配置 devServer{inline:true}
+	b) webpack-dev-server 命令行加 --inline --hot
+	c) 执行命令后，访问http://localhost:8080/page/index.html，当有修改后，页面会自动刷新
 
 ## vuejs相关
 
@@ -38,4 +39,3 @@ vuex来管理状态
 
 1) 单文件组件里的js单独打包
 2) 开发模式和生产模式用的不太好，后面改下
-3) sourcemap

@@ -93,6 +93,11 @@ module.exports = {
       }),
       appCss,
       compCss,
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: '"production"'
+        }
+      }),
       new HtmlWebpackPlugin({
         title: "a project for webpack+vuejs",
         filename: "page/index.html",
