@@ -26,16 +26,16 @@
 
 6) 热更新
 The easiest way to use Hot Module Replacement with the webpack-dev-server is to use the inline mode.
-	a) webpack.config.js 里配置 devServer{inline:true}
-	b) webpack-dev-server 命令行加 --inline --hot
-	c) 执行命令后，访问http://localhost:8080/page/index.html，当有修改后，页面会自动刷新
+
+webpack.config.js 里配置 devServer{inline:true},
+webpack-dev-server 命令行加 --inline --hot,
+执行命令后，访问http://localhost:8080/page/index.html，当有修改后，页面会自动刷新
+
+7) 拷贝到远程机器
+
+使用scp进行拷贝，可以设置免密拷贝，不需要输入密码。需要拷贝时，将webpack.config.js里最后的注释放开就可以。
 
 ## vuejs相关
 
 例子中使用了 vue-router来做路由管理，组件文件里面有父子组件事件通信及数据传输例子。
 vuex来管理状态
-
-## 暂时未做的
-
-1) 单文件组件里的js单独打包
-2) 开发模式和生产模式用的不太好，后面改下
