@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "server": "webpack-dev-server --inline --hot"
   },
   "author": "ingrid.zhang",
   "license": "ISC",
