@@ -15,9 +15,9 @@ const compCss = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-    "app": ["./router/router.js"], 
-    // "component": ["./component/actitem.js","./component/luckydog.js"], 
-    "vendor":["./lib/zepto.js","vue","vue-router","vuex","./util/util.js"],
+    "js/app": ["./router/router.js"], 
+    "js/component": ["./component/actitem.js","./component/luckydog.js"], 
+    "js/vendor":["./lib/zepto.js","vue","vue-router","vuex","./util/util.js"],
   },
   output: {
       path: path.resolve(__dirname, './dist'),
@@ -87,9 +87,7 @@ module.exports = {
   },
   plugins: [
       new webpack.optimize.CommonsChunkPlugin({
-          name: ['vendor'],
-          fielname: '[name].[hash].js',
-          // chunks: ['vendor']   //增加这个类库就打包不到一起了，表示抽取entry.vendor公共代码
+          names: ['js/vendor'],
       }),
       appCss,
       compCss,

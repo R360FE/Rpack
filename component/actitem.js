@@ -35,6 +35,6 @@ module.exports = {
 	            self.dtm = self.$store.getters.getTime;            
 	        },100);
 	    }
-	},
+	}
 	
  }
