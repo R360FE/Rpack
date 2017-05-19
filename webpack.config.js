@@ -3,26 +3,35 @@ var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
+
+// var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 var scp = require("./util/scp.js");
 
 //create multiple instances
 const appCss = new ExtractTextPlugin({
-    filename: "assets/app.css",//[name],[id],[contentHash]
+    filename: "css/app.css",//[name],[id],[contentHash]
 });
 const compCss = new ExtractTextPlugin({
-    filename: "assets/components.css",//[name],[id],[contentHash]
+    filename: "css/components.css",//[name],[id],[contentHash]
+});
+const widgetCss = new ExtractTextPlugin({
+    filename: "css/widget.css",//[name],[id],[contentHash]
 });
 
 module.exports = {
   entry: {
-    "js/app": ["./router/router.js"], 
-    "js/component": ["./component/actitem.js","./component/luckydog.js"], 
+    "js/app": ["./app.js"],
     "js/vendor":["./lib/zepto.js","vue","vue-router","vuex","./util/util.js"],
+    "js/components": ["./component/index.js"]//["./component/actitem/index.js","./component/luckydog/index.js"]
   },
   output: {
       path: path.resolve(__dirname, './dist'),
       filename: "[name].js",
-      chunkFilename: "[name].js",
+      chunkFilename: "js/[name].js",
   },
   module: {
     rules: [
@@ -42,7 +51,7 @@ module.exports = {
       /*================================================*/
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loaders: 'vue-loader',
         include: /component/,
         options: {
           loaders: {
@@ -55,6 +64,12 @@ module.exports = {
             //抽取*.vue里的样式如下配置：
             scss: compCss.extract({
               use: "css-loader!sass-loader",
+              // use: [{
+              //   loader: 'css-loader',
+              //   options: {
+              //     minimize: false
+              //   }
+              // },"sass-loader"],
               fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
             })
             
@@ -72,25 +87,36 @@ module.exports = {
           loaders: {
             scss: appCss.extract({
               use: "css-loader!sass-loader",
-              // use: [{
-              //   loader: 'css-loader',
-              //   options: {
-              //     minimize: false
-              //   }
-              // },"sass-loader"],
               fallback: "vue-style-loader"
             })
           }
         }
       },
+      {
+        test: /\.vue$/,
+        loaders: 'vue-loader',
+        include: /widget/,
+        options: {
+          loaders: {
+            scss: widgetCss.extract({
+              use: "css-loader!sass-loader",
+              fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
+            })
+            
+          },
+        }
+      },
     ]
   },
   plugins: [
+      new DashboardPlugin(dashboard.setData),
+      // new FriendlyErrorsPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
-          names: ['js/vendor'],
+          names: ['js/vendor','js/components'],//
+          filename: "[name].js"
       }),
-      appCss,
       compCss,
+      appCss,
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: '"production"'
@@ -98,7 +124,7 @@ module.exports = {
       }),
       new HtmlWebpackPlugin({
         title: "a project for webpack+vuejs",
-        filename: "page/index.html",
+        filename: "index.html",
         template: "./page/index.html",
         // xhtml: true,  // 需要符合xhtml的标准
         // minify: {
@@ -109,6 +135,7 @@ module.exports = {
       })
   ],
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.common.js',
       'vue-router$': 'vue-router/dist/vue-router.common.js',

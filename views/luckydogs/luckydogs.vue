@@ -1,7 +1,7 @@
 <template>
 	<div class="luckydogs-wrap">
       <div class="navbar">
-        <a class="link" href="javascript:;" v-on:click="go404">{{$route.query.linkurl}}</a>
+        <a class="link" href="javascript:;" v-on:click="goNested">{{$route.query.linkurl}}</a>
         <a href="javascript:;" class="link" v-on:click="goIndex">回首页</a>
       </div>
 		
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-  var luckydog = require('../../component/luckydog.vue');
+  // var luckydog = require('../../component/luckydog/luckydog.vue');
 
   module.exports = {
-  	components: {
-  		luckydog: luckydog
-  	},
+  	// components: {
+  	// 	luckydog: luckydog
+  	// },
   	data: function(){
   		return {
         dogs: $.extend({
@@ -32,8 +32,8 @@
   		}
   	},
   	methods: {
-  		go404: function(){
-  			this.$router.push({path:"/notfound"});
+  		goNested: function(){
+  			this.$router.push({path:"/nested"});
   		},
   		goIndex: function(){
   			// this.$router.go(-1);

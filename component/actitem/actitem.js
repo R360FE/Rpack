@@ -1,10 +1,5 @@
 module.exports = {
  	name: "actItem",
- 	// data: function(){
- 	// 	return {
- 	// 		diffTime: "20000000"
- 	// 	}
- 	// },
  	data: function(){
  		return {
  			dtm: {}

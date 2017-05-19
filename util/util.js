@@ -16,6 +16,16 @@ window.Utils = {
 		return new Array(len).fill(1).map(function(item,index){
 			return Math.round(Math.random()*10%10);
 		});
+	},
+	getQuery: function(p){
+		var params = location.search.split("?")[1];
+		var paramsArray = params && params.split("&");
+		var paramsJson = {};
+		paramsArray && paramsArray.forEach(function(item,index){
+			var arr = item.split("=");
+			paramsJson[arr[0]] = arr[1];
+		});
+		return paramsJson[p];
 	}
 };
 

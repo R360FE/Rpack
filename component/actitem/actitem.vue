@@ -35,6 +35,7 @@
 	<div class="tjy" v-if="status==2 || currentCoupon==1000">
 		<p class="goLoans full">开奖等不及，快速获取1000元 ＞</p>
 	</div>
+    <slot name='nested'></slot>
 </div>
 </template>
 <script src="./actitem.js"></script>

@@ -19,19 +19,7 @@
 	</div>
 </div>
 </template>
-<script src="./luckydog.js">
-	// module.exports = {
-	// 	name: "luckydog",
-	// 	props: {
-	// 		luckydog: Object
-	// 	},
-	// 	methods: {
-	// 		goLuckydogs: function(){
-	// 			this.$emit("goLdPage");//子组件出发事件goLdPage
-	// 		}
-	// 	}
-	// }
-</script>
+<script src="./luckydog.js"></script>
 <style lang="scss" scoped >
 // pixels to rems 
 @function pxToRem($px) {
